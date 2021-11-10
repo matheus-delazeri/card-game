@@ -26,6 +26,17 @@ void criaBaralho(int cartas[][2]){
 	return;
 }
 
+void criaMesa(CARTA_T mesa[5][5]){
+	int i, j;
+	for(i=0;i<5;i++){
+		for(j=0;j<5;j++){
+			mesa[i][j].valor = 0;
+			mesa[i][j].naipe = 0;
+		}
+	}
+	return;
+}
+
 /* funcao que embaralha as cartas de acordo com uma semente para a funcao srand */
 /* OBS: o uso da mesma semente irá gerar embaralhamento igual */
 void embaralha(int cartas[][2], unsigned int semente){
@@ -41,7 +52,7 @@ void embaralha(int cartas[][2], unsigned int semente){
 		cartas[j][VALOR] = aux_v;
 		cartas[j][NAIPE] = aux_n;
 	}
-	printf("- O baralho foi embaralhado\n");
+	printf("-> O baralho foi embaralhado\n");
 	return;
 }
 
@@ -123,8 +134,10 @@ int contaPontos(CARTA_T *mao){
 void ordenaBaralho(int cartas[][2], int tam_deque){
 	int i;
 	for(i=0; i<tam_deque; i++){
+		/* Avança as cartas 1 posição para frente, tendo em vista que a carta do topo saiu */
 		cartas[i][0] = cartas[i+1][0];
 		cartas[i][1] = cartas[i+1][1];
+		/* Zera a posição a frente, fazendo com que os espaços "sobrando" no deque sejam preenchidos com [0, 0] */
 		cartas[i+1][0] = 0;
 		cartas[i+1][1] = 0;
 	}
