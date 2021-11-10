@@ -7,6 +7,7 @@ void imprimeBaralhoVetor(int cartas[][2]){
 	int i;
 	for(i=0; i<TAM_DEQUE; i++)
 		printf("[%i %i]", cartas[i][0], cartas[i][1]);
+	printf("\n");
 	return;
 }
 
@@ -40,6 +41,7 @@ void embaralha(int cartas[][2], unsigned int semente){
 		cartas[j][VALOR] = aux_v;
 		cartas[j][NAIPE] = aux_n;
 	}
+	printf("- O baralho foi embaralhado\n");
 	return;
 }
 
@@ -116,5 +118,16 @@ int contaPontos(CARTA_T *mao){
 			return 2;
 	}
 	return 0;
+}
+
+void ordenaBaralho(int cartas[][2], int tam_deque){
+	int i;
+	for(i=0; i<tam_deque; i++){
+		cartas[i][0] = cartas[i+1][0];
+		cartas[i][1] = cartas[i+1][1];
+		cartas[i+1][0] = 0;
+		cartas[i+1][1] = 0;
+	}
+	return;
 }
 
