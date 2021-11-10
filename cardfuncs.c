@@ -12,17 +12,26 @@ void imprimeBaralhoVetor(int cartas[][2]){
 }
 
 void imprimeMesaMatriz(CARTA_T mesa[5][5]){
-	int i,j;
+	int i,j,aux;
 	printf("\n-----------------------------------\n");
-	printf("\n               MESA                \n");
-	printf("-----------------------------------\n");
+	printf("\n                MESA                \n");
+	printf("-------------------------------------\n");
 	for(i=0;i<5;i++){
-			for(j=0; j<5; j++){
-				printf(" [%i %i] ", mesa[i][j].valor, mesa[i][j].naipe);
+		if(i==0){
+			for(aux=0;aux<5;aux++){
+				printf("      %i", aux);
 			}
 			printf("\n");
+		}
+		for(j=0; j<5; j++){
+			if(j==0){
+				printf(" %i ", i);
+			}
+			printf(" [%i %i] ", mesa[i][j].valor, mesa[i][j].naipe);
+		}
+		printf("\n");
 	}
-	printf("-----------------------------------\n");
+	printf("-------------------------------------\n");
 	return;
 }
 

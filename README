@@ -3,6 +3,8 @@ codigo. Verifique em tst.c exemplos de utilizacao destas funcoes.
 
 Para compilar o codigo de exemplo, se estiver utilizando o gcc, use o comando:
 gcc -Wall -ansi tst.c cardfuncs.c -o tst
+Para compilar o codigo principal, se estiver utilizando o gcc, use o comando:
+gcc -Wall -ansi main.c cardfuncs.c -o main
 
 Se estiver usando uma IDE, como o Code Blocks:
 - os parâmetros acima podem ser encontrados na configuração do compilador ("usar
