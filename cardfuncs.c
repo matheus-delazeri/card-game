@@ -11,6 +11,21 @@ void imprimeBaralhoVetor(int cartas[][2]){
 	return;
 }
 
+void imprimeMesaMatriz(CARTA_T mesa[5][5]){
+	int i,j;
+	printf("\n-----------------------------------\n");
+	printf("\n               MESA                \n");
+	printf("-----------------------------------\n");
+	for(i=0;i<5;i++){
+			for(j=0; j<5; j++){
+				printf(" [%i %i] ", mesa[i][j].valor, mesa[i][j].naipe);
+			}
+			printf("\n");
+	}
+	printf("-----------------------------------\n");
+	return;
+}
+
 /* funcao simples que preenche o vetor de baralho com as 52 cartas padrao */
 void criaBaralho(int cartas[][2]){	
 	long int i, j=0;

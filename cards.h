@@ -15,6 +15,7 @@ typedef struct n {
 } CARTA_T;
 
 void imprimeBaralhoVetor(int cartas[][2]);
+void imprimeMesaMatriz(CARTA_T mesa[5][5]);
 void criaBaralho(int cartas[][2]);
 void criaMesa(CARTA_T mesa[5][5]);
 void embaralha(int cartas[][2], unsigned int semente);

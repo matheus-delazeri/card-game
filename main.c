@@ -3,7 +3,8 @@
 #include "cards.h"
 
 int main(){
-	int cartas[TAM_DEQUE][2], i, j, rodada = 0, tam_deque = TAM_DEQUE;
+	int cartas[TAM_DEQUE][2], i, rodada = 0, tam_deque = TAM_DEQUE;
+	int pos_horizontal, pos_vertical;
 	CARTA_T mao[5], mesa[5][5];
 	criaBaralho(cartas);
 	criaMesa(mesa);
@@ -21,14 +22,12 @@ int main(){
 		for(i=0; i<MAO; i++){
 			printf(" [%i %i] ", mao[i].valor, mao[i].naipe);
 		}
-		printf("\n-----------------------------------\n");
-		printf("\n               MESA                \n");
-		printf("-----------------------------------\n");
-		for(i=0;i<5;i++){
-			for(j=0; j<5; j++){
-				printf(" [%i %i] ", mesa[i][j].valor, mesa[i][j].naipe);
-			}
-			printf("\n");
+		imprimeMesaMatriz(mesa);	
+		for(i=0;i<MAO;i++){
+			printf("\n Em que posição da matriz você deseja posicionar a carta [%i %i]? ", mao[i].valor, mao[i].naipe);
+			scanf("%d %d", &pos_horizontal, &pos_vertical);
+			mesa[pos_horizontal][pos_vertical].valor = mao[i].valor;
+			mesa[pos_horizontal][pos_vertical].naipe = mao[i].naipe;
 		}
 		rodada++;
 	}
