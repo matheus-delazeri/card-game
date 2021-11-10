@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "cards.h"
 
 int main(){
+	bool pos_valida;
 	int cartas[TAM_DEQUE][2], i, rodada = 0, tam_deque = TAM_DEQUE;
 	int pos_horizontal, pos_vertical;
 	CARTA_T mao[5], mesa[5][5];
@@ -24,10 +26,18 @@ int main(){
 		}
 		imprimeMesaMatriz(mesa);	
 		for(i=0;i<MAO;i++){
-			printf("\n Em que posição da matriz você deseja posicionar a carta [%i %i]? ", mao[i].valor, mao[i].naipe);
-			scanf("%d %d", &pos_horizontal, &pos_vertical);
-			mesa[pos_horizontal][pos_vertical].valor = mao[i].valor;
-			mesa[pos_horizontal][pos_vertical].naipe = mao[i].naipe;
+			pos_valida = false;
+			while(!pos_valida){
+				printf("\n Escolha a posição na matriz para a carta [%i %i]: ", mao[i].valor, mao[i].naipe);
+				scanf("%d %d", &pos_horizontal, &pos_vertical);
+				if(mesa[pos_horizontal][pos_vertical].valor == 0 && mesa[pos_horizontal][pos_vertical].naipe == 0){
+					mesa[pos_horizontal][pos_vertical].valor = mao[i].valor;
+					mesa[pos_horizontal][pos_vertical].naipe = mao[i].naipe;
+					pos_valida = true;
+				} else{
+					printf("\n Opss... Esta posição já está ocupada por outra carta! Tente novamente\n");
+				}
+			}
 		}
 		rodada++;
 	}
