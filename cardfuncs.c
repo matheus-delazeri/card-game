@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "cards.h"
 
 /* funcao simples para impressão do vetor de baralho */
@@ -13,7 +14,6 @@ void imprimeBaralhoVetor(int cartas[][2]){
 
 void imprimeMesaMatriz(CARTA_T mesa[5][5]){
 	int i,j,aux;
-	printf("\n-----------------------------------\n");
 	printf("\n                MESA                \n");
 	printf("-------------------------------------\n");
 	for(i=0;i<5;i++){
@@ -27,11 +27,60 @@ void imprimeMesaMatriz(CARTA_T mesa[5][5]){
 			if(j==0){
 				printf(" %i ", i);
 			}
-			printf(" [%i %i] ", mesa[i][j].valor, mesa[i][j].naipe);
+			printf(" [%i %i] ", mesa[j][i].valor, mesa[j][i].naipe);
 		}
 		printf("\n");
 	}
 	printf("-------------------------------------\n");
+	return;
+}
+
+void fazTroca(CARTA_T mesa[5][5]){
+
+	bool troca_valida = false;
+	int pos_x, pos_y, x_novo, y_novo, valor_antigo, naipe_antigo;
+
+	while(!troca_valida){
+		printf("\n-> Digite a posição (x y) em que a carta se encontra: ");
+		if(scanf("%d %d", &pos_x, &pos_y)==2){
+			if((pos_x<5 && pos_x>=0) && (pos_y<5 && pos_y>=0)){
+				printf("\n-> A carta selecionada é: [%i %i]\n", mesa[pos_x][pos_y].valor, mesa[pos_x][pos_y].naipe);
+				while(!troca_valida){
+					printf("-> Onde esta carta deverá ser posicionada (x y)? ");
+					if(scanf("%d %d", &x_novo, &y_novo)==2){
+						if((x_novo<5 && x_novo>=0) && (y_novo<5 && y_novo>=0)){
+							valor_antigo = mesa[pos_x][pos_y].valor;
+							naipe_antigo = mesa[pos_x][pos_y].naipe;
+							mesa[pos_x][pos_y].valor = mesa[x_novo][y_novo].valor; 
+							mesa[pos_x][pos_y].naipe = mesa[x_novo][y_novo].naipe; 
+							mesa[x_novo][y_novo].valor = valor_antigo;
+							mesa[x_novo][y_novo].naipe = naipe_antigo;
+							printf("\n-> As cartas [%i %i] e [%i %i] trocaram de posições\n ", mesa[pos_x][pos_y].valor, mesa[pos_x][pos_y].naipe, mesa[x_novo][y_novo].valor, mesa[x_novo][y_novo].naipe);
+							troca_valida = true;
+						}else{
+							printf("\n Digite uma posição válida");
+						}
+					} else{
+						limpaScanf();
+						printf("\n Digite apenas valores numéricos");
+					}
+				}
+			} else{
+				printf("\n Digite uma posição válida");
+			}
+		} else{
+			limpaScanf();
+			printf("\n Digite apenas valores numéricos");
+	}
+	}
+	return;
+}
+
+void limpaScanf(){
+	int ch;
+	while (((ch = fgetc(stdin)) != '\n') && (ch != EOF)) {
+	; 
+	}
 	return;
 }
 
