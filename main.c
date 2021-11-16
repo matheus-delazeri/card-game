@@ -13,7 +13,7 @@ int main()
 	criaMesa(mesa);
 	embaralha(cartas, SEMENTE);
 
-	while (rodada < 1)
+	while (rodada < 5)
 	{
 		printf("\n           [ RODADA %i ]        \n", rodada + 1);
 		for (i = 0; i < MAO; i++)
