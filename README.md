@@ -49,3 +49,5 @@ Obs.: as posições deverão ser separadas por um espaço. Exemplo: `0 3`
 
 Siga este mesmo processo durante as 5 rodadas do jogo. Ao fim da última rodada você será perguntado se deseja realizar alguma alteração na mesa. Digite 1 para realizar uma troca ou 0 caso não queira realizar nenhuma (você poderá realizar, no máximo, 2 trocas).
 Ao fim do jogo serão exibidos seus pontos totais, seguindo a tabela abaixo:
+
+![image](https://user-images.githubusercontent.com/55641441/141883075-d1dfb409-0804-419d-8a85-8d26171a8d69.png)
